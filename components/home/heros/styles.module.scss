@@ -1,3 +1,76 @@
+.delicacies_hero {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+.delicacies_hero div {
+  height: 100%;
+  /* border: 1px solid darkolivegreen; */
+  border-radius: 10px;
+  background: #003011;
+
+  padding: 5px;
+}
+.delicacies_hero div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.delicacies_hero div img:hover {
+  transform: scale(1.02);
+  transition: all 0.4s ease-in-out;
+}
+
+.delicacies_hero div ul:hover {
+  transform: scaleY(0.95);
+  transition: all 0.4s ease-in-out;
+}
+
+.foodname {
+  font-size: 1.2em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fooddesc {
+  font-size: 0.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+.seemore {
+  font-size: 0.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  color: greenyellow;
+}
+
+@media screen and (max-width: 762px) {
+  .delicacies_hero {
+    flex-direction: column;
+    /* width: 100%; */
+  }
+
+  .delicacies_hero div {
+    display: flex;
+    gap: 0.5em;
+    height: 8rem;
+  }
+  .delicacies_hero div img {
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover;
+  }
+  .delicacies_hero div img:hover {
+    transform: scale(1.03);
+    transition: all 0.4s ease-in-out;
+  }
+  .fooddesc {
+    margin-bottom: 8px;
+    line-height: 16px;
+  }
+}
+
 .thirdhero {
   display: flex;
   flex-direction: row;
@@ -5,7 +78,7 @@
   //   justify-content: space-around;
   align-items: flex-start;
   text-align: left;
-  padding: 4rem;
+  padding: 0 0 1rem 1rem;
 
   &_categories {
     div {
