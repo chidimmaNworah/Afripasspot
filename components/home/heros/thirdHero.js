@@ -17,14 +17,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import FloatingCardsScene from "@/components/FloatingCards";
+import Image from "next/image";
 
-export default function ThirdHero() {
+const categories = [
+  { icon: "/icons/coffee.png", label: "Breakfast" },
+  { icon: "/icons/launch.png", label: "Launch" },
+  { icon: "/icons/dinner.png", label: "Dinner" },
+  { icon: "/icons/sugar-free.png", label: "Sugar Free" },
+  { icon: "/icons/low-calories.png", label: "Low Calories" },
+];
+
+export default function ThirdHero({ icon, label, position }) {
   return (
     <>
       <div className={styles.thirdhero}>
-        <div className="flex flex-col gap-8 row-start-2 items-start mb-10">
-          <div className="text-gray-400 flex items-center flex-row justify-between w-full">
-            <h1 className="text-2xl text-left flex items-center gap-2 ">
+        <div className="flex flex-col gap-2 row-start-2 items-start mb-10">
+          <div className="flex items-center flex-row justify-between w-full">
+            <h1 className="text-lg text-left flex items-center gap-2 font-inder">
               TOP CATEGORIES <FaStar className="text-sm" />
             </h1>
             <a
@@ -39,65 +49,18 @@ export default function ThirdHero() {
           <div
             className={`${styles.thirdhero_categories} grid grid-cols-[1fr_1fr_1fr] items-center gap-4 h-full w-full text-center`}
           >
-            <div>
-              <p>
-                <GiTeapotLeaves />
-              </p>
-              <p>Breakfast</p>
-            </div>
-            <div>
-              <p>
-                <PiBowlSteamFill />
-              </p>
-              <p>Launch</p>
-            </div>
-            <div>
-              <p>
-                <MdDinnerDining />
-              </p>
-              <p>Dinner</p>
-            </div>
-            <div>
-              <p>
-                <GiSugarCane />
-              </p>
-              <p>Sugar Free</p>
-            </div>
-            <div>
-              <p>
-                <TbBrandSugarizer />
-              </p>
-              <p>Low Calories</p>
-            </div>
-            <div>
-              <p>
-                <FaLeaf />
-              </p>
-              <p>Vegetarian</p>
-            </div>
-            <div>
-              <p>
-                <IoIceCream />
-              </p>
-              <p>Snack</p>
-            </div>
-            <div>
-              <p>
-                <RiDrinks2Fill />
-              </p>
-              <p>Drinks</p>
-            </div>
-            <div>
-              <p>
-                <GiCampCookingPot />
-              </p>
-              <p>Soup</p>
-            </div>
+            {categories.map((cat, index) => (
+              <div key={index}>
+                <Image src={cat.icon} alt={cat.label} width={40} height={0} />
+                <p className="mt-2 text-sm font-medium">{cat.label}</p>
+              </div>
+            ))}
           </div>
+          {/* <FloatingCardsScene /> */}
         </div>
         <div>
           <div className="flex flex-col gap-8 row-start-2 items-start">
-            <div className="text-gray-400 flex items-center flex-row justify-between w-full">
+            {/* <div className="text-gray-400 flex items-center flex-row justify-between w-full">
               <h1 className="text-2xl text-left flex items-center gap-2 ">
                 GET INSPIRED <FaStar className="text-sm" />
               </h1>
@@ -109,7 +72,8 @@ export default function ThirdHero() {
               >
                 More &#8594;
               </a>
-            </div>
+            </div> */}
+
             <Swiper
               slidesPerView={"auto"}
               spaceBetween={30}
