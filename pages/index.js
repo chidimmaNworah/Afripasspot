@@ -13,6 +13,8 @@ import { FaMinus, FaPlus, FaLongArrowAltRight } from "react-icons/fa";
 import FirstHero from "@/components/home/heros/firstHero";
 import Hero from "@/sections/homepage/hero";
 import Titles from "@/components/titles";
+import Diet from "@/components/preference/diet";
+import CookingTime from "@/components/preference/cookingTime";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,46 +33,26 @@ export default function Home() {
       <div
         className={`${geistSans.variable} ${geistMono.variable} h-full items-center justify-items-center mb-10  font-[family-name:var(--font-geist-sans)]`}
       >
-        <main className="flex flex-col row-start-2 items-center items-start">
+        <main className="flex flex-col row-start-2 items-center h-full">
           <Hero />
-          <div
-            className="w-full h-full bg-center bg-cover relative flex flex-col items-center justify-center pb-12"
-            style={{ backgroundImage: "url('/assets/floralbg.png')" }}
-          >
-            <h1 className="text-2xl mt-8 mb-6 font-inder">
-              CHOOSE YOUR DIET PREFERENCE
-            </h1>
-            <ul className="flex flex-wrap gap-4 justify-center text-sm font-inder">
-              <li className="bg-gray-200/80 backdrop-blur-md rounded-xl shadow-xl p-4 items-center cursor-pointer hover:bg-gray-200 transition-colors">
-                I eat Everything
-              </li>
-              <li className="bg-gray-200/80 backdrop-blur-md rounded-xl shadow-xl p-4 items-center cursor-pointer hover:bg-gray-200 transition-colors">
-                Vegetarian
-              </li>
-              <li className="bg-gray-200/80 backdrop-blur-md rounded-xl shadow-xl p-4 items-center cursor-pointer hover:bg-gray-200 transition-colors">
-                Vegan
-              </li>
-              <li className="bg-gray-200/80 backdrop-blur-md rounded-xl shadow-xl p-4 items-center cursor-pointer hover:bg-gray-200 transition-colors">
-                Pescetarian
-              </li>
-            </ul>
-          </div>
+          <CookingTime />
+          <Diet />
           <ThirdHero />
           {/* <Titles title="Top Categories" buttonText="View All" /> */}
 
-          <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
+          {/* <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
             Travel around the Africa with us and discover <br />
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               Satiating, Savoury Tastes
             </code>
             .
-          </p>
+          </p> */}
 
-          <FirstHero />
+          {/* <FirstHero /> */}
         </main>
       </div>
 
-      <div className="flex gap-4 items-center flex-col sm:flex-row justify-center mb-10">
+      {/* <div className="flex gap-4 items-center flex-col sm:flex-row justify-center mb-10">
         <a
           className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
@@ -94,11 +76,11 @@ export default function Home() {
         >
           Read about us
         </a>
-      </div>
+      </div> */}
 
-      <SecondHero />
+      {/* <SecondHero /> */}
       {/* <ThirdHero /> */}
-      <h1 className=" text-center text-2xl py-8">
+      {/* <h1 className=" text-center text-2xl py-8">
         EXPLORE RECEPIES BY COUNTRY
       </h1>
       <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
@@ -114,16 +96,16 @@ export default function Home() {
           Explore all →
         </a>
         .
-      </p>
-      <div
+      </p> */}
+      {/* <div
         className={`${geistSans.variable} ${geistMono.variable} h-full grid grid-cols-[1fr_1fr_1fr] items-center justify-items-center px-8 pt-8 mb-10 sm:px-20 font-[family-name:var(--font-geist-sans)]`}
       >
         <CounterHero target={54} title="Countries" duration={4000} />
         <CounterHero target={654} title="Cities" duration={2500} />
         <CounterHero target={13654} title="Recepies" duration={2000} />
-      </div>
+      </div> */}
 
-      <div className={styles.restaurants}>
+      {/* <div className={styles.restaurants}>
         <div className={styles.hero}>
           <div className={styles.hero_contents}>
             <h1>SPECIALTY RESTAURANTS</h1>
@@ -141,7 +123,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="h-full">
         <div className={styles.heroTwo}>
           <div className={styles.heroTwo_contents}>
@@ -161,7 +143,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

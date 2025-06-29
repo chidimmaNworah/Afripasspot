@@ -85,7 +85,9 @@ export default function Navbar() {
             height={20}
             alt="clock"
           />
-          <p className="text-gray-200 font-thin text-sm">{clientDate}</p>
+          <p className="text-gray-200 font-thin text-xs md:text-sm">
+            {clientDate}
+          </p>
         </div>
         <div className="flex space-x-2 items-center">
           <Image
@@ -118,7 +120,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold ">
-            Green Thumb
+            Afripasspot
           </Link>
 
           {/* Desktop Menu */}
