@@ -10,6 +10,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaMinus, FaPlus, FaLongArrowAltRight } from "react-icons/fa";
+import FirstHero from "@/components/home/heros/firstHero";
+import Hero from "@/sections/homepage/hero";
+import Titles from "@/components/titles";
+import Diet from "@/components/preference/diet";
+import CookingTime from "@/components/preference/cookingTime";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,58 +28,31 @@ const geistMono = localFont({
 });
 
 export default function Home() {
-  const [visible, setVisible] = useState(false);
   return (
     <>
       <div
-        className={`${geistSans.variable} ${geistMono.variable} h-full grid grid-rows-[20px_1fr_20px] items-center justify-items-center px-8 pt-8 mb-10 sm:px-20 font-[family-name:var(--font-geist-sans)]`}
+        className={`${geistSans.variable} ${geistMono.variable} h-full items-center justify-items-center mb-10  font-[family-name:var(--font-geist-sans)]`}
       >
-        <main className="flex flex-col gap-8 row-start-2 items-center items-start">
-          <h1 className="text-2xl">EAT WITH AFRICA</h1>
-          <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
+        <main className="flex flex-col row-start-2 items-center h-full">
+          <Hero />
+          <CookingTime />
+          <Diet />
+          <ThirdHero />
+          {/* <Titles title="Top Categories" buttonText="View All" /> */}
+
+          {/* <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
             Travel around the Africa with us and discover <br />
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               Satiating, Savoury Tastes
             </code>
             .
-          </p>
+          </p> */}
 
-          <div className={styles.delicacies_hero}>
-            <div className="drop-shadow-xl border border-green-900">
-              <img src="/banner.jpg" alt="" />
-              <ul>
-                <li className={styles.foodname}>Fern Soup</li>
-                <li className={styles.fooddesc}>
-                  Origininated from Ugep in Cross-river state, Nigeria
-                </li>
-                <li className={styles.seemore}>See recipies...</li>
-              </ul>
-            </div>
-            <div className="drop-shadow-xl">
-              <img src="/banner.jpg" alt="" />
-              <ul>
-                <li className={styles.foodname}>Fern Soup</li>
-                <li className={styles.fooddesc}>
-                  Origininated from Ugep in Cross-river state, Nigeria
-                </li>
-                <li className={styles.seemore}>See recipies...</li>
-              </ul>
-            </div>
-            <div className="drop-shadow-xl border border-green-900">
-              <img src="/banner.jpg" alt="" />
-              <ul>
-                <li className={styles.foodname}>Fern Soup</li>
-                <li className={styles.fooddesc}>
-                  Origininated from Ugep in Cross-river state, Nigeria
-                </li>
-                <li className={styles.seemore}>See recipies...</li>
-              </ul>
-            </div>
-          </div>
+          {/* <FirstHero /> */}
         </main>
       </div>
 
-      <div className="flex gap-4 items-center flex-col sm:flex-row justify-center mb-10">
+      {/* <div className="flex gap-4 items-center flex-col sm:flex-row justify-center mb-10">
         <a
           className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
@@ -98,11 +76,11 @@ export default function Home() {
         >
           Read about us
         </a>
-      </div>
+      </div> */}
 
-      <SecondHero />
-      <ThirdHero />
-      <h1 className=" text-center text-2xl py-8">
+      {/* <SecondHero /> */}
+      {/* <ThirdHero /> */}
+      {/* <h1 className=" text-center text-2xl py-8">
         EXPLORE RECEPIES BY COUNTRY
       </h1>
       <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
@@ -118,16 +96,16 @@ export default function Home() {
           Explore all →
         </a>
         .
-      </p>
-      <div
+      </p> */}
+      {/* <div
         className={`${geistSans.variable} ${geistMono.variable} h-full grid grid-cols-[1fr_1fr_1fr] items-center justify-items-center px-8 pt-8 mb-10 sm:px-20 font-[family-name:var(--font-geist-sans)]`}
       >
         <CounterHero target={54} title="Countries" duration={4000} />
         <CounterHero target={654} title="Cities" duration={2500} />
         <CounterHero target={13654} title="Recepies" duration={2000} />
-      </div>
+      </div> */}
 
-      <div className={styles.restaurants}>
+      {/* <div className={styles.restaurants}>
         <div className={styles.hero}>
           <div className={styles.hero_contents}>
             <h1>SPECIALTY RESTAURANTS</h1>
@@ -145,7 +123,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="h-full">
         <div className={styles.heroTwo}>
           <div className={styles.heroTwo_contents}>
@@ -165,56 +143,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.offer}>
-        <div className={styles.offer__horizontal}>
-          <div />
-          <p onClick={() => setVisible(!visible)}>
-            <span>Join our newsletter</span>
-            <span>
-              {visible ? (
-                <motion.button whileTap={{ rotate: 360 }}>
-                  <FaMinus />
-                </motion.button>
-              ) : (
-                <motion.button whileTap={{ rotate: 360 }}>
-                  <FaPlus />
-                </motion.button>
-              )}
-            </span>
-          </p>
-          <div />
-        </div>
-        {visible && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            className={styles.offer__subscribe}
-          >
-            <div>
-              <input type="tel" placeholder="Phone" name="phone" />
-              <button>
-                <FaLongArrowAltRight />
-              </button>
-            </div>
-            <div>
-              <input type="email" placeholder="Email" name="email" />
-              <button>
-                <FaLongArrowAltRight />
-              </button>
-            </div>
-            <p>
-              By subscribing to Green Thumb, you are consenting to receive a
-              varying number of marketing messages via email and SMS. Consent is
-              not a condition of any purchase. Message and data rates may apply.
-              Reply HELP for help or unsubscribe to opt-out. View{" "}
-              <a href="/terms-of-use">Terms of Use </a>
-              and <a href="/privacy-policy">Privacy Policy</a>.
-            </p>
-          </motion.div>
-        )}
-      </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
