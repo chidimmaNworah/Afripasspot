@@ -3,18 +3,12 @@ import localFont from "next/font/local";
 import styles from "@/styles/homepage.module.scss";
 import Footer from "@/components/footer";
 import ThirdHero from "@/components/home/heros/thirdHero";
-import SecondHero from "@/components/home/heros/secondHero";
-import CounterHero from "@/components/home/heros/counterHero";
-import { MdFoodBank } from "react-icons/md";
 import Link from "next/link";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { FaMinus, FaPlus, FaLongArrowAltRight } from "react-icons/fa";
-import FirstHero from "@/components/home/heros/firstHero";
 import Hero from "@/sections/homepage/hero";
 import Titles from "@/components/titles";
 import Diet from "@/components/preference/diet";
 import CookingTime from "@/components/preference/cookingTime";
+import StackedCards from "@/components/stackedCards";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,7 +32,22 @@ export default function Home() {
           <CookingTime />
           <Diet />
           <ThirdHero />
-          {/* <Titles title="Top Categories" buttonText="View All" /> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-y-8 lg:gap-y-0">
+            <StackedCards title="Rare" gradient="from-green-800 to-green-500" />
+            <StackedCards
+              title="Regular"
+              gradient="from-lime-800 to-lime-500"
+            />
+            <StackedCards
+              title="Trending"
+              gradient="from-amber-800 to-amber-500"
+            />
+            <StackedCards
+              title="Popular"
+              gradient="from-orange-800 to-orange-500"
+              className={styles.popularStackedCards}
+            />
+          </div>
 
           {/* <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
             Travel around the Africa with us and discover <br />
@@ -47,56 +56,8 @@ export default function Home() {
             </code>
             .
           </p> */}
-
-          {/* <FirstHero /> */}
         </main>
       </div>
-
-      {/* <div className="flex gap-4 items-center flex-col sm:flex-row justify-center mb-10">
-        <a
-          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            className="dark:invert"
-            src="/vercel.svg"
-            alt="Vercel logomark"
-            width={20}
-            height={20}
-          />
-          View Delicacies
-        </a>
-        <a
-          className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read about us
-        </a>
-      </div> */}
-
-      {/* <SecondHero /> */}
-      {/* <ThirdHero /> */}
-      {/* <h1 className=" text-center text-2xl py-8">
-        EXPLORE RECEPIES BY COUNTRY
-      </h1>
-      <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
-        We uncovered the foods for you so that you can spend the rest of your
-        days tasting them <br />
-        <a
-          className="text-center flex justify-center items-center gap-2 hover:underline hover:underline-offset-4 text-[#8CD829]"
-          href="/recepies"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <MdFoodBank className="text-white" />
-          Explore all →
-        </a>
-        .
-      </p> */}
       {/* <div
         className={`${geistSans.variable} ${geistMono.variable} h-full grid grid-cols-[1fr_1fr_1fr] items-center justify-items-center px-8 pt-8 mb-10 sm:px-20 font-[family-name:var(--font-geist-sans)]`}
       >
@@ -127,14 +88,14 @@ export default function Home() {
       <div className="h-full">
         <div className={styles.heroTwo}>
           <div className={styles.heroTwo_contents}>
-            <h1 className="text-2xl">Get Featured</h1>
-            <p className="text-[#9ACD32]">100% Friendly services</p>
+            <h1 className="text-2xl">Are You A Chef?</h1>
+            <p className="text-[#9ACD32]">Get Featured Today</p>
             <p>
-              Green thumb is developed to allow visitors to view the best
-              restaurants by city and state throughout the world. Restaurants
-              are chosen from public information, visitor suggestions and online
-              print reviews to provide you with core African delicacies in all
-              parts of the world.
+              Afripasspot Restaurants is a section developed to allow visitors
+              to view the best restaurants by city and state throughout the
+              world. Restaurants are chosen from public information, visitor
+              suggestions and online print reviews to provide visitors with core
+              African delicacies in all parts of the world.
             </p>
             <button className="rounded-lg">
               <Link href="/contact-us">GET LISTED TODAY</Link>
