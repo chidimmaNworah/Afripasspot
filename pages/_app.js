@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import { MaterialDesignContent, SnackbarProvider } from "notistack";
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }) {
         <Navbar />
         <Component {...pageProps} />
       </SnackbarProvider>
+      <Footer />
     </>
   );
 }

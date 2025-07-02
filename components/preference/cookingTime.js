@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function CookingTime() {
   const items = [
@@ -30,20 +31,67 @@ export default function CookingTime() {
     },
   ];
 
-  return (
-    <div className="bg-custom-orange w-full relative overflow-hidden pb-2">
-      <div className="flex flex-col items-center justify-center py-12 z-10 relative px-4">
-        <h1 className="text-2xl mt-8 mb-6 font-inder text-center">
-          HOW LONG DO YOU WANT TO SPEND COOKING?
-        </h1>
+  // Container fade+up
+  const container = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+        duration: 0.6,
+      },
+    },
+  };
 
+  // Heading slide in
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  // List item fade+up
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.5, ease: "easeOut" },
+    }),
+  };
+
+  return (
+    <motion.div
+      className="bg-custom-orange w-full relative overflow-hidden pb-2"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={container}
+    >
+      <div className="flex flex-col items-center justify-center py-12 z-10 relative px-4">
+        {/* Heading */}
+        <motion.h1
+          className="text-2xl mt-8 mb-6 font-inder text-center"
+          variants={slideInLeft}
+        >
+          HOW LONG DO YOU WANT TO SPEND COOKING?
+        </motion.h1>
+
+        {/* List with stagger */}
         <ul className="flex flex-wrap gap-4 justify-center text-sm font-inder h-full">
           {items.map((item, index) => (
-            <li
+            <motion.li
               key={index}
+              custom={index}
+              variants={itemFadeUp}
               className="bg-gray-200/80 backdrop-blur-md h-40 rounded-t-full rounded-b-xl shadow-xl p-2 items-center justify-center text-center cursor-pointer hover:bg-gray-200 transition-colors flex flex-col w-[140px] sm:w-[180px]"
             >
-              <p>{item.title}</p>
+              <p className="font-semibold">{item.title}</p>
               <span className="text-xs text-gray-500 w-[70%] mb-2">
                 {item.desc}
               </span>
@@ -55,54 +103,20 @@ export default function CookingTime() {
                   className="object-cover rounded-t-full"
                 />
               </div>
-            </li>
+            </motion.li>
           ))}
         </ul>
+
+        {/* Decorative background */}
         <img
           src="/assets/floralbg.png"
           alt="Flower Decoration"
-          className="absolute top-0 left-0 object-contain no-repeat z-[-10] w-60 "
+          className="absolute top-0 left-0 object-contain no-repeat z-[-10] w-60"
         />
-        {/* <img
-          src="/assets/floralbg.png"
-          alt="Flower Decoration"
-          className="absolute top-0 right-0 object-contain no-repeat -scale-x-100 z-[-10] w-60 md:hidden"
-        /> */}
       </div>
 
-      <div
-        className="w-full h-full py-6 bg-center bg-cover relative pb-12 overflow-hidden"
-        style={{ backgroundImage: "url('/assets/akara.png')" }}
-      >
-        <div className="flex flex-wrap items-center justify-around text-center w-full h-full px-4">
-          <div className="flex flex-col items-center justify-start h-full w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-4xl font-bold text-gray-100 mb-10">
-              LET US <span className="text-[#ec5228]">BRING</span>{" "}
-              <br className="lg:hidden" />{" "}
-              <span className="text-[#BBEE2F]">HOME </span>
-              TO YOU
-            </h1>
-            <hr className="w-24 border-t-4 border-[#EC5228] rounded-full mb-10" />
-
-            <p className="w-60 lg:w-full text-lg text-gray-300">
-              Explore through the depths of African dishes and beyond
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-start w-full h-full md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-4xl font-bold text-gray-100 mb-10">
-              FIND A DISH
-            </h1>
-            <button className="font-inder font-semibold text-2xl bg-gray-300/50  w-60 lg:w-full h-20 rounded text-gray-800 hover:bg-[#EC522850] hover:text-gray-200 transition-colors mb-4">
-              REGION
-            </button>
-            <button className="font-inder font-semibold text-2xl text-gray-800 bg-[#BBEE2F]  w-60 lg:w-full h-20 rounded hover:bg-[#d44c24] transition-colors">
-              TRIBE
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Flower image at the bottom */}
-    </div>
+      {/* The bottom section can also be motion-wrapped similarly if desired */}
+      {/* ... */}
+    </motion.div>
   );
 }

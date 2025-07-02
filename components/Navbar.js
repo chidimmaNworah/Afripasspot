@@ -238,7 +238,7 @@ export default function Navbar() {
             >
               &#8592;
             </button>
-            <div className="mx-6" ref={containerRef}>
+            <div className="mx-6 text-gray-200" ref={containerRef}>
               {[
                 { href: "/", label: "Homepage" },
                 { href: "/recipes", label: "Recipes" },

@@ -18,7 +18,7 @@ export default function SecondHero() {
     <div
       className={`${geistSans.variable} ${geistMono.variable} font-sans w-full h-full`}
     >
-      <div className="flex flex-col gap-8 items-center">
+      <div className="flex flex-col gap-4 items-center">
         <div className="relative w-full max-w-4xl">
           <img
             src="/banner.jpg"
@@ -36,7 +36,7 @@ export default function SecondHero() {
         </div>
 
         {/* Description Text */}
-        <p className="text-sm text-center font-[family-name:var(--font-geist-mono)] mb-6 max-w-xl">
+        <p className="text-sm text-center font-[family-name:var(--font-geist-mono)] max-w-xl">
           To understand our vision & processes better, please watch our short
           educational video: <br />
           <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">

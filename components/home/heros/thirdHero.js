@@ -2,12 +2,7 @@ import React from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaGripfire, FaStar, FaLeaf } from "react-icons/fa";
 import { LuAlarmClockCheck } from "react-icons/lu";
-import { PiBowlSteamFill } from "react-icons/pi";
-import { MdDinnerDining } from "react-icons/md";
-import { IoIceCream } from "react-icons/io5";
-import { GiSugarCane, GiCampCookingPot, GiTeapotLeaves } from "react-icons/gi";
-import { TbBrandSugarizer } from "react-icons/tb";
-import { RiDrinks2Fill } from "react-icons/ri";
+import { motion } from "framer-motion";
 import styles from "./styles.module.scss";
 
 // swiper module imports
@@ -32,12 +27,42 @@ const categories = [
   { icon: "/icons/desert.png", label: "Deserts" },
 ];
 
+const slideInLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: i * 0.15, // stagger by index
+    },
+  }),
+};
+
 export default function ThirdHero({ icon, label, position }) {
   return (
     <>
-      <div className={styles.thirdhero}>
+      <motion.div
+        className={styles.thirdhero}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="flex flex-col gap-2 row-start-2 items-start mb-10">
-          <div className="flex items-center flex-row justify-between w-full">
+          <motion.div
+            className="flex items-center justify-between w-full"
+            variants={slideInLeft}
+          >
             <h1 className="text-lg text-left flex items-center gap-2 font-inder">
               TOP CATEGORIES <FaStar className="text-sm" />
             </h1>
@@ -49,15 +74,18 @@ export default function ThirdHero({ icon, label, position }) {
             >
               More &#8594;
             </a>
-          </div>
+          </motion.div>
           <div
             className={`${styles.thirdhero_categories} grid grid-cols-[1fr_1fr_1fr] items-center gap-4 h-full w-full text-center`}
           >
             {categories.map((cat, index) => (
-              <div key={index}>
+              <motion.div
+                className="flex items-center justify-between w-full"
+                variants={slideInLeft}
+              >
                 <Image src={cat.icon} alt={cat.label} width={40} height={0} />
                 <p className="mt-2 text-sm font-medium">{cat.label}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
           {/* <FloatingCardsScene /> */}
@@ -122,7 +150,7 @@ export default function ThirdHero({ icon, label, position }) {
             </Swiper>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
