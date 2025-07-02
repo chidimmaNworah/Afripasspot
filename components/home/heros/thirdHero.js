@@ -26,6 +26,10 @@ const categories = [
   { icon: "/icons/dinner.png", label: "Dinner" },
   { icon: "/icons/sugar-free.png", label: "Sugar Free" },
   { icon: "/icons/low-calories.png", label: "Low Calories" },
+  { icon: "/icons/drinks.png", label: "Homemade Drinks" },
+  { icon: "/icons/processed.png", label: "Processed Foods" },
+  { icon: "/icons/sweettooth.png", label: "Sweet Tooth" },
+  { icon: "/icons/desert.png", label: "Deserts" },
 ];
 
 export default function ThirdHero({ icon, label, position }) {

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./styles.module.scss";
 import localFont from "next/font/local";
 import { MdSmartDisplay } from "react-icons/md";
 
@@ -16,46 +15,47 @@ const geistMono = localFont({
 
 export default function SecondHero() {
   return (
-    <>
-      <div
-        className={`${geistSans.variable} ${geistMono.variable} h-full grid grid-rows-[20px_1fr_20px] items-center justify-items-center px-8 sm:px-20 font-[family-name:var(--font-geist-sans)]`}
-      >
-        <div className="flex flex-col gap-8 row-start-2 items-center items-start">
-          <h1 className="text-2xl">KNOW FOOD, NO HUNGER</h1>
-          <div className="flex flex-col items-center">
-            <div className="relative flex flex-col items-center w-full h-full">
-              <img
-                src="/banner.jpg"
-                alt=""
-                className={`${styles.backdrop} md:w-[50%] rounded-lg`}
-              />
-              <div className=" absolute  top-[50%] left-[50%] text-white text-sm w-[50px] flex flex-col items-center">
-                <p className="border border-white p-2 rounded">
-                  <MdSmartDisplay className=" text-[30px]" />
-                </p>{" "}
-                Play
-              </div>
-            </div>
-            <p className="text-sm text-center font-[family-name:var(--font-geist-mono) mb-6">
-              Explore with Kimmora who travels to Bauchi State in Nigeria to
-              uncover <br />
-              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-                Hidden Salivating dishes
-              </code>
-              .
+    <div
+      className={`${geistSans.variable} ${geistMono.variable} font-sans w-full h-full`}
+    >
+      <div className="flex flex-col gap-8 items-center">
+        <div className="relative w-full max-w-4xl">
+          <img
+            src="/banner.jpg"
+            alt="Banner"
+            className="w-full h-auto object-cover"
+          />
+
+          {/* Centered Play Icon */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm flex flex-col items-center">
+            <p className="border border-white p-2 rounded-full bg-black bg-opacity-50">
+              <MdSmartDisplay className="text-[30px]" />
             </p>
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-[#8CD829]"
-              href="/recepies"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MdSmartDisplay className="text-white" />
-              Explore more videos →
-            </a>
+            <span className="mt-1">Play</span>
           </div>
         </div>
+
+        {/* Description Text */}
+        <p className="text-sm text-center font-[family-name:var(--font-geist-mono)] mb-6 max-w-xl">
+          To understand our vision & processes better, please watch our short
+          educational video: <br />
+          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+            Hidden Salivating dishes
+          </code>
+          .
+        </p>
+
+        {/* Explore Link */}
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-[#8CD829]"
+          href="/recepies"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MdSmartDisplay className="text-white" />
+          Explore more videos →
+        </a>
       </div>
-    </>
+    </div>
   );
 }

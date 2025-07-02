@@ -6,7 +6,7 @@ import { IoLocationSharp } from "react-icons/io5";
 export default function Copyright() {
   return (
     <div className={styles.footer__copyright}>
-      <section>©2022 GREEN THUMB All Rights Reserved.</section>
+      <section>©2022 AFRIPASSPOT All Rights Reserved.</section>
       <section>
         <ul>
           {data.map((link) => (

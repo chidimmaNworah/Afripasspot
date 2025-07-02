@@ -7,14 +7,7 @@ export default function Links() {
     <div className={styles.footer__links}>
       {links.map((link, i) => (
         <ul key={link.heading}>
-          {i === 0 ? (
-            <b>
-              GREEN <br />
-              THUMB
-            </b>
-          ) : (
-            <b>{link.heading}</b>
-          )}
+          {i === 0 ? <b>AFRIPASSPOT</b> : <b>{link.heading}</b>}
           {link.links.map((link) => (
             <li key={link.name}>
               <Link href={link.link}>{link.name}</Link>

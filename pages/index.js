@@ -9,6 +9,8 @@ import Titles from "@/components/titles";
 import Diet from "@/components/preference/diet";
 import CookingTime from "@/components/preference/cookingTime";
 import StackedCards from "@/components/stackedCards";
+import FavouritePicks from "@/components/preference/favouritePicks";
+import SecondHero from "@/components/home/heros/secondHero";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +34,15 @@ export default function Home() {
           <CookingTime />
           <Diet />
           <ThirdHero />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-y-8 lg:gap-y-0">
+          <p className="relative mb-2 mt-10 text-sm text-center font-[family-name:var(--font-geist-mono)">
+            Travel around the Africa with us and discover <br />
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+              Satiating, Savoury Tastes
+            </code>
+            .
+          </p>
+          <FavouritePicks />
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-y-8 lg:gap-y-0">
             <StackedCards title="Rare" gradient="from-green-800 to-green-500" />
             <StackedCards
               title="Regular"
@@ -48,14 +58,6 @@ export default function Home() {
               className={styles.popularStackedCards}
             />
           </div>
-
-          {/* <p className="mb-2 text-sm text-center font-[family-name:var(--font-geist-mono)">
-            Travel around the Africa with us and discover <br />
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              Satiating, Savoury Tastes
-            </code>
-            .
-          </p> */}
         </main>
       </div>
       {/* <div
@@ -66,45 +68,55 @@ export default function Home() {
         <CounterHero target={13654} title="Recepies" duration={2000} />
       </div> */}
 
-      {/* <div className={styles.restaurants}>
+      <Titles title="Discover More" buttonText="View" />
+      <div className="flex flex-row items-start justify-around mt-4 px-4 gap-10 flex-wrap sm:flex-nowrap">
+        <div className="h-full">
+          <div className={styles.heroTwo_contents}>
+            <p className="text-greenafri text-inder text-2xl font-semibold">
+              Hi, Welcome to Afripasspot!
+            </p>
+            <p>
+              {/* Afripasspot Restaurants is a section developed to allow visitors
+                to view the best restaurants by city and state throughout the
+                world. Restaurants are chosen from public information, visitor
+                suggestions and online print reviews to provide visitors with
+                core African delicacies in all parts of the world. */}
+              We are here to make sure you never have to worry about cooking the
+              right meal for your family or friends. We provide you with the
+              best recipes. <br />
+              Here's what you can do with Afripasspot:
+              <ul className="list-disc ml-5 mt-2">
+                <li>Find out more about a dish you know nothing about</li>
+                <li>Discover new recipes from the depths of Africa</li>
+                <li>Get listed in our restaurant / recipes directory</li>
+                <li>Find where you can get the best rare dishes near you</li>
+              </ul>
+            </p>
+            <button className="rounded-lg">
+              <Link href="/contact-us">GET TO KNOW US</Link>
+            </button>
+          </div>
+        </div>
+        <SecondHero />
+      </div>
+
+      <div className={styles.restaurants}>
         <div className={styles.hero}>
           <div className={styles.hero_contents}>
-            <h1>SPECIALTY RESTAURANTS</h1>
+            <h1>JOIN OUR NEWSLETTER</h1>
             <p>
-              Search State or city to get our top recommended restaurants
-              specializing in African delicacies
+              Don't miss out on the latest recipes, restaurant reviews, and
+              culinary tips from Africa. Subscribe to our newsletter and be the
             </p>
             <div className={styles.hero_search}>
-              <input
-                type="text"
-                placeholder="ENTER CITY OR STATE NAME"
-                name="search"
-              />
+              <input type="text" placeholder="SEARCH..." name="search" />
               <button>SEARCH</button>
             </div>
           </div>
         </div>
-      </div> */}
-      <div className="h-full">
-        <div className={styles.heroTwo}>
-          <div className={styles.heroTwo_contents}>
-            <h1 className="text-2xl">Are You A Chef?</h1>
-            <p className="text-[#9ACD32]">Get Featured Today</p>
-            <p>
-              Afripasspot Restaurants is a section developed to allow visitors
-              to view the best restaurants by city and state throughout the
-              world. Restaurants are chosen from public information, visitor
-              suggestions and online print reviews to provide visitors with core
-              African delicacies in all parts of the world.
-            </p>
-            <button className="rounded-lg">
-              <Link href="/contact-us">GET LISTED TODAY</Link>
-            </button>
-          </div>
-        </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
