@@ -67,7 +67,7 @@ export default function CookingTime() {
 
   return (
     <motion.div
-      className="bg-custom-orange w-full relative overflow-hidden pb-2"
+      className=""
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}

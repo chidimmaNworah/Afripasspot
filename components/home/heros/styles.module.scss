@@ -156,23 +156,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      102deg,
-      rgb(48, 99, 0) 18%,
-      rgb(0, 48, 5) 100%
-    ); /* Gradient background for text container */
+    background: linear-gradient(102deg, rgb(48, 99, 0) 18%, rgb(0, 48, 5) 100%);
+    filter: blur(15px);
     z-index: -1; /* Behind text */
   }
 }
 
 .hearticon {
-  background: #3d3d3d;
+  background: #dfdfdf;
   border-radius: 50%;
-  width: 26px;
-  height: 25px;
-  padding: 3px;
+  width: 32px;
+  height: 32px;
+  padding: 2px 2px 0 2px;
+
   &:hover {
-    background: #000;
+    background: #dfdfdf90;
     cursor: pointer;
   }
 }

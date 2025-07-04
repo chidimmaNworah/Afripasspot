@@ -45,6 +45,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
+            className="w-full"
           >
             <Hero />
           </motion.div>
@@ -54,6 +55,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
+            className="w-full"
           >
             <CookingTime />
           </motion.div>
@@ -63,6 +65,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
+            className="w-full"
           >
             <Diet />
           </motion.div>
@@ -72,12 +75,13 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
+            className="w-full"
           >
             <ThirdHero />
           </motion.div>
 
           <motion.p
-            className="relative mb-2 mt-10 text-sm text-center font-[family-name:var(--font-geist-mono)]"
+            className="relative mb-2 mt-10 text-sm text-center font-[family-name:var(--font-geist-mono)] w-full"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -95,6 +99,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
+            className="w-full"
           >
             <FavouritePicks />
           </motion.div>

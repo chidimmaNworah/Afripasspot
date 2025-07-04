@@ -14,9 +14,10 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import FloatingCardsScene from "@/components/FloatingCards";
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
-  { icon: "/icons/coffee.png", label: "Breakfast" },
+  { icon: "/icons/coffee.png", label: "Breakfast", link: "" },
   { icon: "/icons/launch.png", label: "Launch" },
   { icon: "/icons/dinner.png", label: "Dinner" },
   { icon: "/icons/sugar-free.png", label: "Sugar Free" },
@@ -24,7 +25,7 @@ const categories = [
   { icon: "/icons/drinks.png", label: "Homemade Drinks" },
   { icon: "/icons/processed.png", label: "Processed Foods" },
   { icon: "/icons/sweettooth.png", label: "Sweet Tooth" },
-  { icon: "/icons/desert.png", label: "Deserts" },
+  { icon: "/icons/desert.png", label: "Sides" },
 ];
 
 const slideInLeft = {
@@ -79,33 +80,27 @@ export default function ThirdHero({ icon, label, position }) {
             className={`${styles.thirdhero_categories} grid grid-cols-[1fr_1fr_1fr] items-center gap-4 h-full w-full text-center`}
           >
             {categories.map((cat, index) => (
-              <motion.div
-                className="flex items-center justify-between w-full"
-                variants={slideInLeft}
+              <Link
+                href={{
+                  pathname: "/recipes",
+                  query: { categories: `${cat.label}` },
+                }}
+                key={index}
               >
-                <Image src={cat.icon} alt={cat.label} width={40} height={0} />
-                <p className="mt-2 text-sm font-medium">{cat.label}</p>
-              </motion.div>
+                <motion.div
+                  className="flex items-center justify-between w-full"
+                  variants={slideInLeft}
+                >
+                  <Image src={cat.icon} alt={cat.label} width={40} height={0} />
+                  <p className="mt-2 text-sm font-medium">{cat.label}</p>
+                </motion.div>
+              </Link>
             ))}
           </div>
           {/* <FloatingCardsScene /> */}
         </div>
         <div>
           <div className="flex flex-col gap-8 row-start-2 items-start">
-            {/* <div className="text-gray-400 flex items-center flex-row justify-between w-full">
-              <h1 className="text-2xl text-left flex items-center gap-2 ">
-                GET INSPIRED <FaStar className="text-sm" />
-              </h1>
-              <a
-                className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-[#8CD829]"
-                href="/recepies"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                More &#8594;
-              </a>
-            </div> */}
-
             <Swiper
               slidesPerView={"auto"}
               spaceBetween={30}
@@ -121,14 +116,23 @@ export default function ThirdHero({ icon, label, position }) {
                   <p className="absolute top-4 right-2">
                     <CiHeart className={styles.hearticon} />
                   </p>
-                  <div className={`${styles.text_container}`}>
-                    <p className="text-sm mb-2">Zesty Grilled Chicken Salad</p>
-                    <p className="flex items-center text-[10px] text-gray-400 mb-1">
-                      <LuAlarmClockCheck className="text-sm mr-1" /> 20 min
-                      {"  "}
-                      <FaGripfire className="text-sm" /> 312kcal
-                    </p>
-                  </div>
+                  <Link href="/recipes/dish/1">
+                    <div className={`${styles.text_container}`}>
+                      <p className="text-sm mb-2">
+                        Zesty Grilled Chicken Salad
+                      </p>
+                      <div className="flex items-center text-[10px] text-gray-400 mb-1 gap-2">
+                        <p className="flex items-center">
+                          <LuAlarmClockCheck className="text-sm mr-1" />{" "}
+                          <span>20 min</span>
+                        </p>
+                        <p className="flex items-center">
+                          <FaGripfire className="text-sm" />{" "}
+                          <span>312kcal</span>
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide className={styles.swiper_slide}>

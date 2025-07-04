@@ -3,23 +3,25 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const recipes = [
   {
     id: 1,
-    title: "Spicy Jollof Rice",
+    title: "Spicy Jollof Breakfast",
     description:
       "A West African classic made with tomatoes, peppers, and spices.",
     image: "/images/jollof.jpg",
-    category: "Rice",
+    category: "Breakfast",
   },
   {
     id: 2,
-    title: "Egusi Soup",
+    title: "Egusi Launch",
     description:
-      "Melon seed soup cooked with vegetables, meats, and rich spices.",
+      "Melon seed Launch cooked with vegetables, meats, and rich spices.",
     image: "/images/egusi.jpg",
-    category: "Soup",
+    category: "Launch",
   },
   {
     id: 3,
@@ -27,7 +29,7 @@ const recipes = [
     description:
       "Steamed bean pudding made with peppers, onions, and fish or egg.",
     image: "/images/moimoi.jpg",
-    category: "Beans",
+    category: "Dinner",
   },
   {
     id: 4,
@@ -38,15 +40,30 @@ const recipes = [
   },
 ];
 
-const categories = ["All", "Rice", "Soup", "Beans", "Sides"];
+const categories = ["All", "Breakfast", "Launch", "Dinner", "Sides"];
 
 export default function RecipesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategories, setSelectedCategories] = useState(["All"]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      const queryCategories = router.query.categories;
+      if (queryCategories) {
+        const categoryArray = Array.isArray(queryCategories)
+          ? queryCategories
+          : queryCategories.split(",");
+        setSelectedCategories(categoryArray);
+      }
+    }
+  }, [router.isReady, router.query.categories]);
 
   const filteredRecipes = recipes.filter((recipe) => {
     const matchCategory =
-      selectedCategory === "All" || recipe.category === selectedCategory;
+      selectedCategories.includes("All") ||
+      selectedCategories.includes(recipe.category);
     const matchSearch = recipe.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -76,9 +93,16 @@ export default function RecipesPage() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => {
+                const newSelected = cat === "All" ? ["All"] : [cat]; // You can make this multi-select if needed
+                setSelectedCategories(newSelected);
+                router.push({
+                  pathname: "/recipes",
+                  query: { categories: newSelected.join(",") },
+                });
+              }}
               className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
-                selectedCategory === cat
+                selectedCategories === cat
                   ? "bg-[#8CD829] text-white shadow"
                   : "border border-[#8CD829] text-[#8CD829] hover:bg-[#f1fdf0]"
               }`}
