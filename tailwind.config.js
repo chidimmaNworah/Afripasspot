@@ -13,6 +13,7 @@ module.exports = {
       backgroundImage: {
         "custom-orange":
           "linear-gradient(0deg, rgba(255, 85, 0, 1) 0%, rgba(250, 180, 122, 1) 100%)",
+        "article-image": "url('/articlesbg.jpg')",
       },
       colors: {
         background: "var(--background)",

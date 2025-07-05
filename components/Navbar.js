@@ -131,7 +131,7 @@ export default function Navbar() {
                 "/"
               )} hover:text-green-600 transition duration-300`}
             >
-              Homepage
+              Home
             </Link>
             <Link
               href="/recipes"
@@ -142,12 +142,20 @@ export default function Navbar() {
               Recipes
             </Link>
             <Link
-              href="/blog"
+              href="/articles"
               className={`${isActive(
-                "/blog"
+                "/articles"
               )} hover:text-green-600 transition duration-300`}
             >
-              Blog
+              Articles
+            </Link>
+            <Link
+              href="/shop"
+              className={`${isActive(
+                "/shop"
+              )} hover:text-green-600 transition duration-300`}
+            >
+              Shop
             </Link>
             <Link
               href="/about"
@@ -155,23 +163,7 @@ export default function Navbar() {
                 "/about"
               )} hover:text-green-600 transition duration-300`}
             >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className={`${isActive(
-                "/contact"
-              )} hover:text-green-600 transition duration-300`}
-            >
-              Contact Us
-            </Link>
-            <Link
-              href="/search"
-              className={`${isActive(
-                "/search"
-              )} hover:text-green-600 transition duration-300`}
-            >
-              Search
+              About Us
             </Link>
             {isAuthenticated ? (
               <button
@@ -190,14 +182,14 @@ export default function Navbar() {
                 >
                   Login
                 </Link>
-                <Link
+                {/* <Link
                   href="/auth/signup"
                   className={`${isActive(
                     "/auth/signup"
                   )} hover:text-green-600 transition duration-300`}
                 >
                   Register
-                </Link>
+                </Link> */}
               </>
             )}
           </div>
@@ -240,12 +232,11 @@ export default function Navbar() {
             </button>
             <div className="mx-6 text-gray-200" ref={containerRef}>
               {[
-                { href: "/", label: "Homepage" },
+                { href: "/", label: "Home" },
                 { href: "/recipes", label: "Recipes" },
-                { href: "/blog", label: "Blog" },
-                { href: "/about", label: "About" },
-                { href: "/contact", label: "Contact" },
-                { href: "/search", label: "Search" },
+                { href: "/articles", label: "Articles" },
+                { href: "/shop", label: "Shop" },
+                { href: "/about", label: "About Us" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -276,13 +267,6 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Login
-                  </Link>
-                  <Link
-                    href="/auth/signup"
-                    className="block px-4 py-2 text-white transition duration-300  hover:bg-indigo-100 hover:text-black"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Register
                   </Link>
                 </>
               )}

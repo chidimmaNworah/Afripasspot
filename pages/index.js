@@ -12,6 +12,11 @@ import StackedCards from "@/components/stackedCards";
 import FavouritePicks from "@/components/preference/favouritePicks";
 import SecondHero from "@/components/home/heros/secondHero";
 import { motion } from "framer-motion";
+import {
+  ArrowDownRightFromCircleIcon,
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -127,6 +132,75 @@ export default function Home() {
             />
           </motion.div>
         </main>
+      </div>
+      <Titles title="Articles" buttonText="View All" />
+      <div className="w-full h-full bg-[url('../public/articlesbg.jpg')] bg-cover bg-center bg-no-repeat relative">
+        <div className="w-full h-full bg-black/[.5] ">
+          <div className="flex flex-col md:flex-row w-full h-full gap-6 px-4 py-10 max-w-screen-xl mx-auto">
+            {/* Left side - 2/3 on md+, full on small screens */}
+            <div className="w-full md:w-2/3 flex flex-col justify-between h-full">
+              {/* Top Half */}
+              <div className="text-white flex flex-col gap-2">
+                <p>Top Pick</p>
+                <p className="mt-6">Title of the article</p>
+                <h3 className="font-inder text-2xl mb-8 max-w-2xl">
+                  Neque porro quisquam est qui dolorem ipsum quia dolor sit
+                  amet, consectetur, adipisci velit...
+                </h3>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button className="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-green-700/20 transition shadow bg-black/20">
+                    <ArrowLeftCircleIcon /> Read More
+                  </button>
+                  <button className="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-green-700/20 transition shadow bg-white/10">
+                    <ArrowDownRightFromCircleIcon /> Explore More
+                  </button>
+                </div>
+              </div>
+
+              {/* Bottom Half */}
+              <div className="flex flex-wrap gap-4 mt-20">
+                {[1, 2].map((_, i) => (
+                  <div
+                    key={i}
+                    className="text-white flex flex-col gap-2 w-[200px]"
+                  >
+                    <Image
+                      src="/banner.jpg"
+                      alt={`Article ${i}`}
+                      width={200}
+                      height={150}
+                      className="shadow-lg object-cover"
+                    />
+                    <p className="text-sm mt-2 line-clamp-[calc(var(--characters)/100)]">
+                      Title of the article can add lorem ipsum
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side - 1/3 on md+, full on small screens */}
+            <div className="w-full md:w-1/3">
+              {[1, 2, 3, 4, 5].map((_, i) => (
+                <div
+                  className="text-white flex flex-row items-start gap-4 shadow"
+                  key={i}
+                >
+                  <Image
+                    src="/banner.jpg"
+                    alt={`Article ${i}`}
+                    width={150}
+                    height={100}
+                    className="object-cover rounded"
+                  />
+                  <p className="text-sm">
+                    Title of the article can add lorem ipsum
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       <motion.div

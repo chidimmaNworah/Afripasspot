@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const recipes = [
   {
@@ -72,16 +73,18 @@ export default function RecipesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fdfdfd] to-[#f6f6f6] py-12 px-6 md:px-12">
-      {/* Title */}
-      <motion.h1
-        initial={{ y: -40, opacity: 0 }}
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold text-center text-[#8CD829] mb-10"
+        className="mb-6 text-sm text-gray-500"
       >
-        Discover African Recipes 🍲
-      </motion.h1>
-
+        <Link href="/">
+          <span className="hover:underline text-[#8CD829]">
+            ← Back to Homepage
+          </span>
+        </Link>
+      </motion.div>
       {/* Filters */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -101,10 +104,10 @@ export default function RecipesPage() {
                   query: { categories: newSelected.join(",") },
                 });
               }}
-              className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
-                selectedCategories === cat
+              className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium cursor-crosshair ${
+                selectedCategories.includes(cat)
                   ? "bg-[#8CD829] text-white shadow"
-                  : "border border-[#8CD829] text-[#8CD829] hover:bg-[#f1fdf0]"
+                  : "border border-[#8CD829] text-[#8CD829] hover:bg-[#8CD82980] hover:text-white"
               }`}
             >
               {cat}
